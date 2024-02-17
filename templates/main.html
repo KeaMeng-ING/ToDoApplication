@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        width: 70%;
+        max-width: 600px;
+        background-color: #e0e0ff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      #taskInput {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        outline: none;
+        font-size: 16px;
+      }
+      #taskInputContainer {
+        position: relative;
+        width: 100%;
+      }
+      #addTaskBtn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        margin-top: -1px; /* Align with the input */
+        border: none;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        font-size: 16px;
+      }
+      #addTaskBtn:hover {
+        background-color: #555;
+      }
+      #taskList {
+        list-style-type: none;
+        padding: 0;
+        width: 100%;
+      }
+      .taskItem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
+        width: 100%;
+      }
+      .taskItem:last-child {
+        border-bottom: none;
+      }
+      .taskItem .taskText {
+        flex-grow: 1;
+      }
+      .taskItem .taskActions {
+        margin-left: 10px;
+      }
+      .taskItem .taskActions button {
+        padding: 5px 10px;
+        margin-left: 5px;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+        outline: none;
+      }
+      .taskItem .taskActions button.delete {
+        background-color: #ff4d4d;
+        color: #fff;
+      }
+      .taskItem.completed .taskText {
+        text-decoration: line-through;
+        color: #888;
+      }
+      #loginBtn {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(102, 67, 229, 0.6); /* Green with transparency */
+        color: white;
+        cursor: pointer;
+        outline: none;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      #loginBtn:hover {
+        background-color: rgba(102, 67, 229, 0.9); /* Darker green on hover */
+      }
+      #greeting {
+        position: absolute;
+        top: 30px;
+        left: 40px;
+        color: #333;
+        font-size: 1em; /* Adjust size as needed */
+        font-weight: bold; /* Makes the text bold */
+      }
+      .incompleteTasks {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .completed {
+        text-decoration: line-through;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="email"],
+      .form-group input[type="password"] {
+        width: calc(100% - 12px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+      }
+
+      .form-group button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+        outline: none;
+      }
+
+      .form-group button:hover {
+        background-color: #45a049;
+      }
+
+      .form-footer {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      .form-footer a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .form-footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>

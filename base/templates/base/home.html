@@ -1,0 +1,51 @@
+{% extends 'main.html'%} {% block content %}
+<div class="container">
+  {% include 'navbar.html' %} {% if request.user.is_authenticated %}
+
+  <div id="taskInputContainer">
+    <form action="{% url 'addTask' %}" method="POST">
+      {% csrf_token %}
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Add new task..."
+        name="task"
+      />
+      <button type="submit" id="addTaskBtn">Add Task</button>
+    </form>
+  </div>
+  <ul id="taskList">
+    {% for task in tasks %}
+    <li class="taskItem">
+      <span class="taskText {% if task.complete %}completed{% endif %}"
+        >{{ task.title }}</span
+      >
+
+      <span class="taskActions">
+        {% if task.complete %}
+        <a href="{% url 'uncompleteTask' task.id %}"
+          ><button class="complete">Completed</button></a
+        >
+        {% else %}
+        <a href="{% url 'completeTask' task.id %}"
+          ><button class="complete">Complete</button></a
+        >
+      </span>
+      {% endif %}
+      <span class="taskActions">
+        <a href="{% url 'deleteTask' task.id %}"
+          ><button class="delete">Delete</button></a
+        >
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <div class="incompleteTasks">{{uncompleteTask}} task incomplete</div>
+
+  {% else %}
+  <div>Welcome... Please login to continue</div>
+  {% endif %}
+</div>
+
+{% endblock content %}

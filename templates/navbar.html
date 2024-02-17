@@ -1,0 +1,12 @@
+{% extends 'main.html' %} {% block content %}
+
+<h2>My Todo List</h2>
+{% if request.user.is_authenticated %}
+<div id="greeting">Hello, {{user.username|title}}</div>
+{% else %}
+<div id="greeting">Welcome...</div>
+{% endif %} {% if not request.user.is_authenticated %}
+<a href="{% url 'login' %}"><button id="loginBtn">Login</button></a>
+{% else %}
+<a href="{% url 'logout' %}"><button id="loginBtn">Logout</button></a>
+{% endif %} {% endblock %}
